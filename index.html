@@ -47,7 +47,7 @@
         const App = () => {
             // --- Default Constants ---
             const inflationRate = 3.0; 
-            const fundAnnualInterest = 3.5; 
+            const fundAnnualInterest = 3.22; // Updated based on 3.5% Treasury - 0.28% Fee
             const taxRate = 0.25;
 
             // --- State Variables (with LocalStorage) ---
@@ -328,15 +328,25 @@
                                     
                                     {/* Interest Explanation Dropdown */}
                                     {showInterestInfo && (
-                                        <li className="text-xs bg-white p-3 rounded border border-green-200 mt-1 mb-1 shadow-sm">
-                                            <p className="font-bold mb-1">איך הגענו ל-3.5%?</p>
-                                            <p className="mb-2">הקרן משקיעה באג"ח ממשלת ארה"ב (Treasury Bills).</p>
-                                            <p className="mb-1">1. ריבית שוק בארה"ב (Fed): <strong>~3.8%</strong></p>
-                                            <p className="mb-2">2. פחות דמי ניהול קרן: <strong>0.28%-</strong></p>
-                                            <p className="font-bold mb-2 text-green-700">= תשואה שנתית נטו: ~3.52%</p>
-                                            <a href="https://www.google.com/search?q=US+1+Year+Treasury+Yield" target="_blank" className="text-blue-500 underline flex items-center gap-1">
-                                                לחץ כאן לצפייה בנתון הריבית העולמי
+                                        <li className="text-xs bg-white p-3 rounded border border-green-200 mt-1 mb-1 shadow-sm animate-in fade-in zoom-in duration-200">
+                                            <p className="font-bold mb-2">מאיפה המספר {fundAnnualInterest}%?</p>
+                                            <div className="mb-2 space-y-1">
+                                                <div className="flex justify-between">
+                                                    <span>1. ריבית אג"ח ארה"ב (1Y Treasury):</span>
+                                                    <strong>~3.50%</strong>
+                                                </div>
+                                                <div className="flex justify-between text-red-500">
+                                                    <span>2. פחות דמי ניהול קרן:</span>
+                                                    <strong>0.28%-</strong>
+                                                </div>
+                                                <div className="border-t pt-1 mt-1 flex justify-between font-bold text-green-700">
+                                                    <span>= תשואה שנתית נטו (צפי):</span>
+                                                    <span>~3.22%</span>
+                                                </div>
+                                            </div>
+                                            <a href="https://www.google.com/search?q=US+1+Year+Treasury+Yield" target="_blank" className="text-blue-500 underline flex items-center gap-1 mt-2 hover:text-blue-700">
                                                 <i data-lucide="external-link" className="w-3 h-3"></i>
+                                                לחץ כאן לצפייה בנתון הריבית העולמי
                                             </a>
                                         </li>
                                     )}
